@@ -1,25 +1,57 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    /**
+     * Reference to "hidden" input for the purpose of 
+     * passing data to Pageflex project
+     */
+    const data = document.getElementById('FIELD_555');
+
+    const [ state, setState ] = useState({
+        name: 'Brad Runnels',
+        title: 'developer',
+    });
+    const [ updateCounter, setUpdateCounter ] = useState(0);
+    
+    const handleChange = e => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        });
+    };
+    const handleUpdate = e => {
+        setUpdateCounter(prevState => prevState + 1);
+    };
+
+    useEffect(
+        () => { data.value = JSON.stringify(state) },
+        [updateCounter]
+    );
+
+    /**
+     * Below is the JSX that will be transpiled into Javascript
+     */
+    return (
+        <div>
+            <label>Name</label>
+            <input
+                type='text'
+                name='name'
+                onChange={handleChange}
+                onBlur={handleUpdate}
+                value={state.name} />
+
+            <label>Title</label>
+            <input
+                type='text'
+                name='title'
+                onChange={handleChange}
+                onBlur={handleUpdate}
+                value={state.title} />
+        </div>
+    );
 }
 
 export default App;
