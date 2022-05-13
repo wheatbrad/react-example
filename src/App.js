@@ -2,11 +2,6 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-
-    /**
-     * Reference to "hidden" input for the purpose of 
-     * passing data to Pageflex project
-     */
     const data = document.getElementById('FIELD_555');
 
     const [ state, setState ] = useState({
@@ -16,23 +11,19 @@ function App() {
     const [ updateCounter, setUpdateCounter ] = useState(0);
     
     const handleChange = e => {
-        setState({
-            ...state,
+        setState(prev => ({
+            ...prev,
             [e.target.name]: e.target.value
-        });
+        }));
     };
     const handleUpdate = e => {
         setUpdateCounter(prevState => prevState + 1);
     };
 
-    useEffect(
-        () => { data.value = JSON.stringify(state) },
-        [updateCounter]
-    );
+    useEffect(() => {
+        data.value = JSON.stringify(state)
+    }, [updateCounter]);
 
-    /**
-     * Below is the JSX that will be transpiled into Javascript
-     */
     return (
         <div>
             <label>Name</label>
