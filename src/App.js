@@ -3,13 +3,11 @@ import './App.css';
 
 function App() {
     const data = document.getElementById('FIELD_555');
-
     const [ state, setState ] = useState({
         name: 'Brad Runnels',
         title: 'developer',
     });
     const [ updateCounter, setUpdateCounter ] = useState(0);
-    
     const handleChange = e => {
         setState(prev => ({
             ...prev,
@@ -23,6 +21,7 @@ function App() {
     useEffect(() => {
         data.value = JSON.stringify(state)
     }, [updateCounter]);
+
 
     return (
         <div>
