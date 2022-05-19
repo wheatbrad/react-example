@@ -1,45 +1,28 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
+import LabeledTextInput from './components/LabeledTextInput';
 
 function App() {
-    const data = document.getElementById('FIELD_555');
-    const [ state, setState ] = useState({
-        name: 'Brad Runnels',
-        title: 'developer',
-    });
-    const [ updateCounter, setUpdateCounter ] = useState(0);
-    const handleChange = e => {
-        setState(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value
+    const data = useRef(document.getElementById('FIELD_555'));
+    const [ state, setState ] = useState({});
+
+    const handleUpdate = (key, value) => {
+        setState(prevState => ({
+            ...prevState,
+            [key]: value
         }));
-    };
-    const handleUpdate = e => {
-        setUpdateCounter(prevState => prevState + 1);
     };
 
     useEffect(() => {
-        data.value = JSON.stringify(state)
-    }, [updateCounter]);
+        data.current.value = JSON.stringify(state);
+    }, [state]);
 
 
     return (
         <div>
-            <label>Name</label>
-            <input
-                type='text'
-                name='name'
-                onChange={handleChange}
-                onBlur={handleUpdate}
-                value={state.name} />
-
-            <label>Title</label>
-            <input
-                type='text'
-                name='title'
-                onChange={handleChange}
-                onBlur={handleUpdate}
-                value={state.title} />
+            <LabeledTextInput label='Name' handleUpdate={handleUpdate} />
+            <LabeledTextInput label='Title' handleUpdate={handleUpdate} />
+            <LabeledTextInput label='Company' handleUpdate={handleUpdate} />
         </div>
     );
 }
