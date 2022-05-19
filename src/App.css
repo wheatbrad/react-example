@@ -1,2 +1,24 @@
 body { padding: 16px; }
-label { display: block; }
+label {
+    display: block;
+    margin: 10px 0 2px;
+    font-weight: bold;
+    color: royalblue;
+}
+input[type="text"] {
+    padding: 6px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    transition: border .2s ease-out, background-color 0.2s ease-out;
+}
+input[type="text"]:hover {
+    background-color: whitesmoke;
+    border: 1px solid royalblue;
+    transition: border 0.2s ease-in, background-color 0.2s ease-in;
+}
+input[type="text"]:focus {
+    outline: 1px solid royalblue;
+    border-color: royalblue;
+    background-color: aliceblue;
+    transition: border 0.2s ease-in, background-color 0.2s ease-in;
+}
