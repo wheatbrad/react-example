@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const LabeledTextInput = ({ label, handleUpdate }) => {
+const LabeledTextInput = ({ label, handleUpdate, reset }) => {
     const [ state, setState ] = useState('');
+
+    useEffect(() => {
+        setState('');
+    }, [reset.current]);
 
     return (
         <div>
