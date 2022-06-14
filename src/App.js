@@ -26,7 +26,11 @@ function App() {
 
     return (
         <form onSubmit={e => e.preventDefault()}>
-            <LabeledTextInput label='Name' handleUpdate={handleUpdate} reset={reset} />
+            <LabeledTextInput
+                label='Name'
+                handleUpdate={handleUpdate}
+                reset={reset}
+                isFocused={true} />
             <LabeledTextInput label='Title' handleUpdate={handleUpdate} reset={reset} />
             <LabeledTextInput label='Company' handleUpdate={handleUpdate} reset={reset} />
             <button onClick={() => handleReset()}>
