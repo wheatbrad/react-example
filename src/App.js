@@ -8,6 +8,8 @@ function App() {
     const reset = useRef(0);
 
     const handleUpdate = (key, value) => {
+        if (value === '') return;
+        
         setState(prevState => ({
             ...prevState,
             [key]: value
