@@ -1,15 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 
-const LabeledTextInput = ({ label, handleUpdate, reset, isFocused = false }) => {
+const LabeledTextInput = forwardRef(({ label, handleUpdate, reset }, ref) => {
     const [ state, setState ] = useState('');
-    const focused = useRef(null);
 
     useEffect(() => {
         setState('');
-
-        if (isFocused) {
-            focused.current.focus();
-        }
     // eslint-disable-next-line
     }, [reset.current]);
 
@@ -17,7 +12,7 @@ const LabeledTextInput = ({ label, handleUpdate, reset, isFocused = false }) => 
         <div>
             <label>{label}</label>
             <input
-                ref={focused}
+                ref={ref}
                 type='text'
                 name={label.toLowerCase()}
                 value={state}
@@ -25,6 +20,6 @@ const LabeledTextInput = ({ label, handleUpdate, reset, isFocused = false }) => 
                 onBlur={e => handleUpdate(e.target.name, e.target.value)} />
         </div>
     );
-};
+});
 
 export default LabeledTextInput;
