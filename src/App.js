@@ -20,7 +20,6 @@ function App() {
     const handleReset = () => {
         setState({});
         reset.current++;
-        focus.current.focus();
     };
 
     useEffect(() => {

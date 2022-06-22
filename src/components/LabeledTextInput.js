@@ -5,6 +5,10 @@ const LabeledTextInput = forwardRef(({ label, handleUpdate, reset }, ref) => {
 
     useEffect(() => {
         setState('');
+        
+        if (ref !== null) {
+            ref.current.focus();
+        }
     // eslint-disable-next-line
     }, [reset.current]);
 
