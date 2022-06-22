@@ -5,12 +5,21 @@ import LabeledTextInput from './components/LabeledTextInput';
 function App() {
     const data = useRef(document.getElementById('FIELD_555'));
     const [ state, setState ] = useState({});
+    const focus = useRef(null);
+    const reset = useRef(0);
 
     const handleUpdate = (key, value) => {
+        if (value === '') return;
+
         setState(prevState => ({
             ...prevState,
             [key]: value
         }));
+    };
+
+    const handleReset = () => {
+        setState({});
+        reset.current++;
     };
 
     useEffect(() => {
@@ -19,11 +28,18 @@ function App() {
 
 
     return (
-        <div>
-            <LabeledTextInput label='Name' handleUpdate={handleUpdate} />
-            <LabeledTextInput label='Title' handleUpdate={handleUpdate} />
-            <LabeledTextInput label='Company' handleUpdate={handleUpdate} />
-        </div>
+        <form onSubmit={e => e.preventDefault()}>
+            <LabeledTextInput
+                ref={focus}
+                label='Name'
+                handleUpdate={handleUpdate}
+                reset={reset} />
+            <LabeledTextInput label='Title' handleUpdate={handleUpdate} reset={reset} />
+            <LabeledTextInput label='Company' handleUpdate={handleUpdate} reset={reset} />
+            <button onClick={() => handleReset()}>
+                Clear Data
+            </button>
+        </form>
     );
 }
 
