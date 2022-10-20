@@ -45,8 +45,8 @@ button {
     width: 100%;
     margin-top: 20px;
     padding: 16px 24px;
-    background-color: royalblue;
-    color: white;
+    background-color: aliceblue;
+    color: royalblue;
     border: 1px solid royalblue;
     border-radius: 4px;
     font-weight: bold;
@@ -56,7 +56,7 @@ button {
 }
 
 button:hover {
-    background-color: aliceblue;
-    color: royalblue;
+    color: white;
+    background-color: royalblue;
     transition: background-color 0.1s ease-in, color 0.1s ease-in;
 }
