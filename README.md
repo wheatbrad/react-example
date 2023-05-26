@@ -8,6 +8,3 @@ Create a button that allows the user to click and reset the state of the applica
 
 ### Expectation
 When the button is clicked, `App` state is reset to an empty object literal and the `state` of each instance of `LabeledTextInput` is reset to empty string literal.
-
-**NOTE:**
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
