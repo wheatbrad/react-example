@@ -3,7 +3,7 @@ import LabeledTextInput from './components/LabeledTextInput';
 
 function App() {
   const data = useRef(document.getElementById('FIELD_555'));
-  const [state, setState] = useState({});
+  const [ state, setState ] = useState({});
   const focus = useRef(null);
   const reset = useRef(0);
 
