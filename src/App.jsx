@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import LabeledTextInput from './components/LabeledTextInput';
 
+const node = document.getElementById('FIELD_555');
+
 function App() {
-  const data = useRef(document.getElementById('FIELD_555'));
+  const data = useRef(node);
   const [ state, setState ] = useState({});
   const focus = useRef(null);
   const reset = useRef(0);
